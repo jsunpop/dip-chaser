@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Alerts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 1em;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Stock Alert Setup</h1>
+
+        <form id="alertForm">
+            <label for="ticker">Stock Ticker:</label>
+            <input type="text" id="ticker" name="ticker" placeholder="Enter stock symbol" required>
+
+            <label for="percentage">Alert Percentage (%):</label>
+            <input type="number" id="percentage" name="percentage" placeholder="Enter percentage" required min="0" step="0.01">
+
+            <button type="submit">Set Alert</button>
+        </form>
+
+        <div class="message" id="status"></div>
+    </div>
+
+    <script>
+        document.getElementById('alertForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const ticker = document.getElementById('ticker').value;
+            const percentage = document.getElementById('percentage').value;
+
+            if (ticker && percentage) {
+                // Show a success message
+                document.getElementById('status').innerText = `Alert set for ${ticker} with a ${percentage}% change.`;
+            } else {
+                document.getElementById('status').innerText = 'Please fill out both fields.';
+            }
+        });
+    </script>
+
+</body>
+</html>
